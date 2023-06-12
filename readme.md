@@ -1,6 +1,6 @@
-## Technetium Documentation
+## Open to Intern Documentation
 
-This documentation provides an overview of the Technetium project and its requirements. Technetium is a software project aimed at managing college and intern data for an internship platform.
+This documentation provides an overview of the Open-to-Intern project and its requirements. Open-to-Intern is a software project aimed at managing college and intern data for an internship platform.
 
 ### Project Requirements
 
@@ -52,9 +52,7 @@ The endpoint expects a GET request to the following URL: `BASE_URL/functionup/co
 
 The server should return a response with the college details and the list of interns who have applied for internships at that college.
 
-### Testing
 
-To test the APIs, create a new collection in Postman called "Project 2 Internship." Each API should have a new request within this collection, and the requests should be appropriately named, such as "Create college" or "Get college details." Ensure that each member of the team has their tests in a running state.
 
 For additional information about project requirements, refer to the provided sources:
 
