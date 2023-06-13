@@ -44,12 +44,12 @@ const createIntern = async (req, res) => {
 const getIntern = async (req, res) => {
     try {
         const collegeName = req.query.collegeName
-        if (!collegeName || collegeName.trim() == '') return res.status(400).json({ status: false, message: 'College Name is required' });
+        if (!collegeName) return res.status(404).json({ status: false, message: 'College Name is required' });
         else {
             const college = await collegeModel.findOne({ name: collegeName });
             if (!college) return res.status(404).json({ status: false, message: 'College not found' });
             else {
-                const intern = await internModel.find({ collegeId: college._id }, { name: 1, email: 1, mobile: 1 });
+                const intern = await internModel.find({ collegeId: college._id, isDeleted: false }, { name: 1, email: 1, mobile: 1 });
                 const details = {
                     name: college.name,
                     fullName: college.fullName,
