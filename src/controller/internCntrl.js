@@ -54,7 +54,7 @@ const getIntern = async (req, res) => {
                     name: college.name,
                     fullName: college.fullName,
                     logoLink: college.logoLink,
-                    Interns: intern
+                    interns: intern
                 }
                 res.status(200).json({ status: true, data: details });
             }
