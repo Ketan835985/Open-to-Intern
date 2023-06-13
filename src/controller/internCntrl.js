@@ -29,14 +29,14 @@ const createIntern = async (req, res) => {
                             collegeId: findCollege._id
                         }
                         const intern = await internModel.create(internData)
-                        const selectedData = {name : intern.name, email : intern.email, mobile : intern.mobile, collegeId : intern.collegeId , isDeleted : intern.isDeleted};
+                        const selectedData = { name: intern.name, email: intern.email, mobile: intern.mobile, collegeId: intern.collegeId, isDeleted: intern.isDeleted };
                         res.status(201).json({ status: true, data: selectedData });
                     }
                 }
             }
         }
     } catch (error) {
-        res.status(500).json({ status: false, message: error.message });
+        res.status(400).json({ status: false, message: error.message });
     }
 }
 
@@ -44,17 +44,17 @@ const createIntern = async (req, res) => {
 const getIntern = async (req, res) => {
     try {
         const collegeName = req.query.collegeName
-        if(! collegeName || collegeName.trim() == '') return res.status(400).json({ status: false, message: 'College Name is required' });
-        else{
+        if (!collegeName || collegeName.trim() == '') return res.status(400).json({ status: false, message: 'College Name is required' });
+        else {
             const college = await collegeModel.findOne({ name: collegeName });
-            if(!college) return res.status(404).json({ status: false, message: 'College not found' });
-            else{
-                const intern = await internModel.find({ collegeId: college._id },{ name: 1, email: 1, mobile: 1 });
+            if (!college) return res.status(404).json({ status: false, message: 'College not found' });
+            else {
+                const intern = await internModel.find({ collegeId: college._id }, { name: 1, email: 1, mobile: 1 });
                 const details = {
-                    name : college.name,
-                    fullName : college.fullName,
-                    logoLink : college.logoLink,
-                    Interns : intern
+                    name: college.name,
+                    fullName: college.fullName,
+                    logoLink: college.logoLink,
+                    Interns: intern
                 }
                 res.status(200).json({ status: true, data: details });
             }
