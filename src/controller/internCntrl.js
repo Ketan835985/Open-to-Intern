@@ -49,7 +49,7 @@ const getIntern = async (req, res) => {
             const college = await collegeModel.findOne({ name: collegeName });
             if (!college) return res.status(404).json({ status: false, message: 'College not found' });
             else {
-                const intern = await internModel.find({ collegeId: college._id, isDeleted: false });
+                const intern = await internModel.find({ collegeId: college._id, isDeleted: false },{name:true, mobile: true, email:true, isDeleted:true});
                 const details = {
                     name: college.name,
                     fullName: college.fullName,
